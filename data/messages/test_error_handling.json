@@ -1,0 +1,58 @@
+[
+    {
+        "frame_seconds_index": 10,
+        "op_type": "grayscale|random_rotation"
+    },
+    {
+        "video_ref": "video_4.mp4",
+        "frame_seconds_index": -15,
+        "op_type": "grayscale|random_rotation"
+    },
+    {
+        "video_ref": "video_4.mp4",
+        "frame_seconds_index": 15,
+        "op_type": "cinza|random_rotation"
+    },
+    {
+        "video_ref": "video_4.mp4",
+        "frame_seconds_index": 15,
+        "op_type": "random string"
+    },
+    {
+        "video_ref": "video_4.mp4",
+        "frame_seconds_index": 92,
+        "op_type": "noise|flip"
+    },
+    {
+        "video_ref": "video_1.mp4",
+        "frame_seconds_index": 10000000,
+        "op_type": "noise|grayscale|flip"
+    },
+    {
+        "video_ref": "video_1.mp4",
+        "frame_seconds_index": 10,
+        "op_type": "flip"
+    },
+    {
+        "video_ref": "video_2.mp4",
+        "frame_seconds_index": 1000000,
+        "op_type": "noise"
+    },
+    {
+        "video_ref": "video_3.mp4",
+        "frame_seconds_index": 10000000,
+        "op_type": "random_rotation"
+    },
+    {
+        "Outro nome": "video_3.mp4",
+        "frame_seconds_index": 10000000,
+        "op_type": "random_rotation|noise|flip"
+    },
+    {
+        "video_ref": "video_3.mp4",
+        "frame_seconds_index": 10000000,
+        "op_type": "random_rotation|noise|flip",
+        "teste": 123,
+        "Outro campo" : 17892.0981
+    }
+]
