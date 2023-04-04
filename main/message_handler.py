@@ -2,6 +2,9 @@ from pydantic import BaseModel, validator
 from send_data_to_Register_API import send_data_to_Register_API
 from extractor import Extractor
 
+class Operation:
+    valid_operations = ['noise', 'random_rotation', 'flip', 'grayscale']
+
 
 class BaseMessage(BaseModel):
     video_ref: str
@@ -20,10 +23,9 @@ class BaseMessage(BaseModel):
     def validate_op_type(cls, value):
         """Valida se op_type é uma operação valida.
         """
-        valid_operations = ['noise', 'random_rotation', 'flip', 'grayscale']
         message_operations = value.split('|')
         for operation in message_operations:
-            if operation not in valid_operations:
+            if operation not in Operation.valid_operations:
                 raise ValueError(f'{operation} is invalid.')
         return value
 

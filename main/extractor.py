@@ -10,22 +10,16 @@ class Extractor:
     def __init__(self, messages, time):
         self.message = messages
         self.ope_start_time = time
-
-    def extract_frame_and_process(self, id):
-        """Extrai o frame do vídeo.
+    def extract_frame(self, video_path, frame_seconds_index):
+        """Extrai o frame do vídeo
 
         Args:
-            id (int): Índice de operação do frame.
+            video_path (str): caminho do arquivo de vídeo.
+            frame_seconds_index (int): índice do frame em segundos.
+
+        Returns:
+            numpy.ndarray: array numpy com o frame extraído.
         """
-        video_ref = self.message['video_ref']
-        frame_seconds_index = self.message['frame_seconds_index']
-        op_type = self.message['op_type']
-        
-        video_path =  f'../data/videos/{video_ref}'
-        if not os.path.exists(video_path):
-            send_data_to_Register_API(id, "Error", "None", self.ope_start_time)
-            return
-        
         video = cv2.VideoCapture(video_path)
         FPS = video.get(cv2.CAP_PROP_FPS)
         frame_index = int(FPS * (frame_seconds_index))
@@ -40,9 +34,27 @@ class Extractor:
             if not ret: # Erro caso o arquivo esteja corrompido ou arquivo não seja suportado
                 send_data_to_Register_API(id, "Error", "None", self.ope_start_time)
                 return
-
-        self.send_data_to_operator(frame, op_type, id)
         video.release()
+        return frame
+
+
+    def extract_frame_and_process(self, id):
+        """Extrai o frame do vídeo e envia para o operador.
+
+        Args:
+            id (int): Índice de operação do frame.
+        """
+        video_ref = self.message['video_ref']
+        frame_seconds_index = self.message['frame_seconds_index']
+        op_type = self.message['op_type']
+        
+        video_path =  f'../data/videos/{video_ref}'
+        if not os.path.exists(video_path):
+            send_data_to_Register_API(id, "Error", "None", self.ope_start_time)
+            return
+        
+        frame = self.extract_frame(video_path, frame_seconds_index)
+        self.send_data_to_operator(frame, op_type, id)
     
     def send_data_to_operator(self, frame, op_type, id):
         """Envia o frame para o operador de imagens.
