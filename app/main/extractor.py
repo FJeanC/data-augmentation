@@ -1,7 +1,7 @@
 import subprocess
 from frame_operator import FrameOperator
 import cv2
-from send_data_to_Register_API import send_data_to_Register_API
+from senders.send_data_to_Register_API import send_data_to_Register_API
 import os
 
 class Extractor:

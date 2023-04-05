@@ -1,7 +1,7 @@
 import pika
 import json
 from datetime import datetime
-from message_handler import Messagehandler
+from handlers.message_handler import Messagehandler
 
 
 class Consumer:

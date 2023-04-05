@@ -44,13 +44,13 @@ docker run -p 15672:15672 -p 5672:5672 rabbitmq:3.9.9-management-alpine
 
 2. Em outro terminal, navegue a para a pasta `/api` e rode o seguinte comando:
 ```bash
-uvicorn registers:app --reload
+uvicorn routes:app --reload
 ```
-3. Em outro terminal, navegue para a pasta `/main` e rode o seguinte comando:
+3. Em outro terminal, navegue para a pasta `/helpers` e rode o seguinte comando:
 ```bash
 python3 enqueue.py
 ```
-4. Em seguida, na mesma pasta, rode o seguinte comando:
+4. Em seguida, na pasta `/main`, rode o seguinte comando:
 ```bash
 python3 consumer.py
 ```

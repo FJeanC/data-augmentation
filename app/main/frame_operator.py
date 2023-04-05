@@ -2,7 +2,7 @@ import cv2
 from random import randint
 import numpy as np
 import os
-from send_data_to_Register_API import send_data_to_Register_API
+from senders.send_data_to_Register_API import send_data_to_Register_API
 
 class FrameOperator:
     """Realiza as operações descritas na mensagem e salva a imagem localmente.

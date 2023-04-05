@@ -1,5 +1,5 @@
 from pydantic import BaseModel, validator
-from send_data_to_Register_API import send_data_to_Register_API
+from senders.send_data_to_Register_API import send_data_to_Register_API
 from extractor import Extractor
 
 class Operation:
